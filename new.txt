@@ -1,0 +1,3 @@
+# modulus 
+// (a * b) % M = ((a % M) * (b % M)) % M
+gray code
