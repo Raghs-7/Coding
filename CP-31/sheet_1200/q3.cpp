@@ -3,11 +3,11 @@
 using namespace std;
 #define ll long long
 
-int gcd(int a, int b) {
+ll gcd(ll a, ll b) {
     return b == 0 ? a : gcd(b, a % b);
 }
 
-int lcm(int a, int b) {
+ll lcm(ll a, ll b) {
     return (1LL* a * b) / gcd(a, b);
 }
 
@@ -18,29 +18,22 @@ int main(){
     cin >> t;
     while(t--){
 
-        int n, x, y;
+        ll n, x, y;
         cin >> n >> x >> y;
 
 
-        int mulx = n/x;
-        int muly = n/y;
-        int mulxy = n/lcm(x,y);
+        ll mulx = n/x;
+        ll muly = n/y;
+        ll mulxy = n/lcm(x,y);
 
         ll res = 0;
-        int high = n;
-        int low = 1;
+        ll high = n;
+        ll low = 1;
 
         mulx -= mulxy;
         muly -= mulxy;
-        
-        for (int i=0; i<mulx; i++){
-            res += high;
-            high--;
-        }
-        for (int i=0; i<muly; i++){
-            res -= low;
-            low++;
-        }
+
+        res = 1LL * mulx * (2LL*n - mulx + 1) / 2  - 1LL * muly * (muly + 1) / 2;
          
         cout << res << endl;
     }  
