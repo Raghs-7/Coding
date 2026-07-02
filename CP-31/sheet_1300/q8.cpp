@@ -27,8 +27,10 @@ int main(){
 
             ll val = ((k-1)*n+1);
             float n = log(val)/log(k);
-
             
+            // if ()
+
+
         }
 
     }

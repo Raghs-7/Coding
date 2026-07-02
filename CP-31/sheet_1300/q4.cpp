@@ -1,28 +1,27 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-
 
 int main(){
 
     int t;
     cin >> t;
-
+    
     while(t--){
 
         int n;
         cin >> n;
+        vector<int> arr(n, -1);
 
-        ll low = 0;
-        ll high = n;
-
-        while( low<=high ){
-            ll mid = low + (high-low)/2;
-
-            // ll s = pow()
+        for (int i=0; i<n; i++){
+            cin >> arr[i];
         }
+
+        
+
+
     }
+
 
     return 0;
 }
