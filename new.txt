@@ -1,3 +1,5 @@
 # modulus 
 // (a * b) % M = ((a % M) * (b % M)) % M
-gray code
+general --> gray code 
+dp --> couting tower
+dp --> editDistance
