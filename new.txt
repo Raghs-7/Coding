@@ -3,3 +3,44 @@
 general --> gray code 
 dp --> couting tower
 dp --> editDistance
+
+// Manacher Algorithm's of string --> all palandromic substrings in O(N)
+
+convert even length palandromes to odd by adding '#' in between them (geek for geek)
+        string ms = "@";
+
+        for (char c : s){
+            ms += "#" + string(1, c);
+        }
+        ms += "#";
+        ms += "$";
+
+        int n = ms.size();
+        
+        int l = 0;
+        int r = 0;
+        vector<int> p(n, 0);
+        
+        for (int i=1; i<n-1; i++){
+
+            int mirror = (l+r)-i;
+
+            if (i<r){
+                p[i] = min(r-i, p[mirror]);
+            }
+
+            while(ms[i-1-p[i]] == ms[i+1+p[i]]){
+                p[i]++;
+            }
+
+            if ( i+p[i] > r){
+                l = i-p[i];
+                r = i+p[i];
+            }
+        }
+p[i] --> maximum radius around index i;
+
+// binary Uplifting ... rather then taking steps 1, 2, 3, 4,... we do binary travel like 13 = 8 + 4 + 1
+// complexity reduces to O(n) to O(logn)
+// revisit Tree (company Queries I)
+
