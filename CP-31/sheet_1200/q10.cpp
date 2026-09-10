@@ -3,17 +3,15 @@
 using namespace std;
 #define ll long long
 
-int binarySearch(vector<pair<int, int>> &arr, ll x){
+int binarySearch(vector<ll> &arr, ll k){
+
     int low = 0;
     int high = arr.size()-1;
-    
-    int res = -1;
-
-    while(low<=high){
+    int res = 0;
+    while(low <= high){
         int mid = low + (high-low)/2;
-
-        if (arr[mid].first<=x){
-            res = low;
+        if (arr[mid]<=k){
+            res = mid;
             low = mid + 1;
         } else {
             high = mid-1;
@@ -26,48 +24,41 @@ int binarySearch(vector<pair<int, int>> &arr, ll x){
 int main(){
 
     int t;
-    cin>> t;
+    cin >> t;
 
     while(t--){
+
         int n, q;
         cin >> n >> q;
 
-        vector<int> original(n, 0);
-        vector<pair<int, int>> arr(n, {0, 0});
-        vector<ll> height(n, 0);
-        
-        int temp;
-        cin>>arr[0].first;
-        height[0] = arr[0].first;
-        original[0] = arr[0].first;
 
-        for (int i=1; i<n; i++){
-            cin>> temp;
-            arr[i].first = temp;
-            arr[i].second = i;
-            height[i] = 1LL*temp + height[i-1];
+        vector<ll> arr(n);
+        for (int i=0; i<n; i++){
+            cin >> arr[i];
         }
 
-        sort(arr.begin(), arr.end());
+        ll maxi = arr[0];
+        vector<ll> pref(n);
+        pref[0] = arr[0];
+        for (int i=1; i<n; i++){
+            pref[i] = arr[i] + pref[i-1];
+            maxi = max(maxi, arr[i]);
+            arr[i] = maxi;
+        }
 
-        for (int i=0; i<q; i++){
-            cin >> temp;
+        while (q--){
+            ll k;
+            cin >> k;
 
-            int res = binarySearch(arr, temp);
-            if (res==-1) {
+            if (k < arr[0]){
                 cout << 0 << " ";
             } else {
-                while(original[res]>=temp){
-                    res++;
-                }
-                int idx = arr[res].second;
-
-                // cout << res << " " << idx << endl;
-                cout << height[idx] << " ";
+                int idx = binarySearch(arr, k);
+                cout << pref[idx] << " ";
             }
-        } cout << endl;
+        }
+        cout << endl;
     }
-
 
     return 0;
 }

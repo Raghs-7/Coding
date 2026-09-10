@@ -4,8 +4,8 @@ general --> gray code
 dp --> couting tower
 dp --> editDistance
 
+// ----------------------------------------------------
 // Manacher Algorithm's of string --> all palandromic substrings in O(N)
-
 convert even length palandromes to odd by adding '#' in between them (geek for geek)
         string ms = "@";
 
@@ -40,7 +40,24 @@ convert even length palandromes to odd by adding '#' in between them (geek for g
         }
 p[i] --> maximum radius around index i;
 
+// -----------------------------------------------
 // binary Uplifting ... rather then taking steps 1, 2, 3, 4,... we do binary travel like 13 = 8 + 4 + 1
 // complexity reduces to O(n) to O(logn)
 // revisit Tree (company Queries I)
 
+// --------------------------------------------------------
+// Prefix Sum Uses -->
+// let say ur given a path and u want to update yk every node in it by +1 so like It should take O(n) yk to update everyone
+// but there's also a way 
+// [L, R] --> want to do +100 to everyone so 
+// arr[L] = +100 and arr[R+1] = -100
+
+// ------------------------------------------------
+// -n = ~n + 1;
+
+// -----------------------------------------------
+cp-31 (1200 - q20)
+// given a string s find the minimum char to remove to make it palandromic --> O(nlogn)
+
+// -----------------------------------------------
+// ceil(A/B) = (A+B-1) / B
